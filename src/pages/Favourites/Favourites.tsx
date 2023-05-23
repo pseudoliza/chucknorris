@@ -1,11 +1,17 @@
-import React from 'react';
-import { useFavourites } from '../../hooks/useFavourites';
-import { Joke } from '../../components/Joke';
-import { JokeItem } from '../../hooks/useJokes';
-import { FavouritesContainer, FavouritesHeader, FavouritesItem, FavouritesList, NoFavouritesText } from './Favourites.styles';
+import React from "react";
+import {useFavourites} from "../../hooks/useFavourites";
+import {Joke} from "../../components/Joke";
+import {type JokeItem} from "../../hooks/useJokes";
+import {
+  FavouritesContainer,
+  FavouritesHeader,
+  FavouritesItem,
+  FavouritesList,
+  NoFavouritesText,
+} from "./Favourites.styles";
 
 const Favourites: React.FC = () => {
-  const { favourites, removeFromFavourites } = useFavourites();
+  const {favourites, removeFromFavourites} = useFavourites();
 
   return (
     <FavouritesContainer>

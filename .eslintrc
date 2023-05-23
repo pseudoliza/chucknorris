@@ -1,15 +1,23 @@
 {
-  "extends": ["airbnb", "plugin:@typescript-eslint/recommended"],
+  "extends": [
+    "airbnb-typescript", 
+    "plugin:@typescript-eslint/recommended", 
+    "plugin:react/recommended",
+    "standard-with-typescript",
+    "plugin:import/typescript",
+    "plugin:prettier/recommended"
+  ],
   "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 2018,
-    "sourceType": "module"
+    "ecmaVersion": "latest",
+    "sourceType": "module",
+    "project": ["tsconfig.json"]
   },
-  "plugins": ["@typescript-eslint"],
+  "plugins": ["@typescript-eslint", "react"],
   "env": {
     "browser": true,
-    "jest": true,
-    "cypress/globals": true
+    "jest": true
+    // "cypress/globals": true
   },
   "rules": {
     "react/jsx-filename-extension": [1, { "extensions": [".tsx"] }],

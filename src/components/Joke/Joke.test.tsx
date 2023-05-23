@@ -1,10 +1,10 @@
-import React from 'react';
-import { render, screen, fireEvent } from '@testing-library/react';
-import { Joke } from './Joke';
-import { mockJoke } from '../../../__mocks__/joke';
+import React from "react";
+import {render, screen, fireEvent} from "@testing-library/react";
+import {Joke} from "./Joke";
+import {mockJoke} from "../../../__mocks__/joke";
 
-describe('Joke', () => {
-  it('renders the joke value', () => {
+describe("Joke", () => {
+  it("renders the joke value", () => {
     render(<Joke joke={mockJoke} />);
 
     expect(screen.getByText(mockJoke.value)).toBeInTheDocument();
@@ -15,7 +15,9 @@ describe('Joke', () => {
 
     render(<Joke joke={mockJoke} addToFavourites={mockAddToFavourites} />);
 
-    const addToFavouritesButton = screen.getByRole('button', { name: 'Add to Favourites' });
+    const addToFavouritesButton = screen.getByRole("button", {
+      name: "Add to Favourites",
+    });
     fireEvent.click(addToFavouritesButton);
 
     expect(mockAddToFavourites).toHaveBeenCalledWith(mockJoke);
@@ -25,13 +27,12 @@ describe('Joke', () => {
     const mockRemoveFromFavourites = jest.fn();
 
     render(
-      <Joke
-        joke={mockJoke}
-        removeFromFavourites={mockRemoveFromFavourites}
-      />
+      <Joke joke={mockJoke} removeFromFavourites={mockRemoveFromFavourites} />,
     );
 
-    const removeFromFavouritesButton = screen.getByRole('button', { name: 'Remove' });
+    const removeFromFavouritesButton = screen.getByRole("button", {
+      name: "Remove",
+    });
     fireEvent.click(removeFromFavouritesButton);
 
     expect(mockRemoveFromFavourites).toHaveBeenCalledWith(mockJoke);

@@ -1,4 +1,4 @@
 export const ROUTES = {
   FAVOURITES: "/favourites",
-  ROOT: "/"
-}
+  ROOT: "/",
+};

@@ -1,6 +1,11 @@
-import React from 'react';
-import { ROUTES } from '../../constants/routes';
-import { NavigationContainer, NavigationItem, NavigationLink, NavigationList } from './Navigation.styles';
+import React from "react";
+import {ROUTES} from "../../constants/routes";
+import {
+  NavigationContainer,
+  NavigationItem,
+  NavigationLink,
+  NavigationList,
+} from "./Navigation.styles";
 
 export const Navigation: React.FC = () => {
   return (

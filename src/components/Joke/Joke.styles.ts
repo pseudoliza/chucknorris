@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const JokeContainer = styled.div`
   background-color: #f5f5f5;

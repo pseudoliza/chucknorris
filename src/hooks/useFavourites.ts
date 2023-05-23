@@ -1,5 +1,5 @@
-import { useEffect, useState, useCallback } from 'react';
-import { JokeItem } from './useJokes';
+import {useEffect, useState, useCallback} from "react";
+import {type JokeItem} from "./useJokes";
 
 export interface FavouritesHook {
   favourites: JokeItem[];
@@ -9,32 +9,42 @@ export interface FavouritesHook {
 }
 
 export const useFavourites = (): FavouritesHook => {
-  const [favourites, setFavourites] = useState(JSON.parse(localStorage.getItem('favourites') || '[]'));
+  const [favourites, setFavourites] = useState(
+    JSON.parse(localStorage.getItem("favourites") ?? "[]"),
+  );
 
   useEffect(() => {
-    localStorage.setItem('favourites', JSON.stringify(favourites));
+    localStorage.setItem("favourites", JSON.stringify(favourites));
   }, [favourites]);
-  
-  const isFavourite = (joke: JokeItem) => favourites.find((fav: JokeItem) => joke.id === fav.id);
 
-  const addToFavourites = useCallback((joke: JokeItem) => {
-    if (favourites.length === 10 && joke) {
-      alert('maximum favourites added, remove one to add new');
-      return;
-    }
-    setFavourites((favourites: JokeItem[]) => {
-      if (!favourites.find((fav: JokeItem) => joke.id === fav.id)) {
-        return [...favourites, joke];
+  const isFavourite = (joke: JokeItem): boolean =>
+    favourites.find((fav: JokeItem) => joke.id === fav.id);
+
+  const addToFavourites = useCallback(
+    (joke: JokeItem) => {
+      if (favourites.length === 10) {
+        alert("maximum favourites added, remove one to add new");
+        return;
       }
-      return favourites;
-    })
-  }, [favourites]);
+      setFavourites((prevState: JokeItem[]) => {
+        if (prevState.find((fav: JokeItem) => joke.id === fav.id) == null) {
+          return [...prevState, joke];
+        }
+        return prevState;
+      });
+    },
+    [favourites],
+  );
 
-  const removeFromFavourites = useCallback((joke: JokeItem) => {    
-    const updatedFavourites =(favourites: JokeItem[]): JokeItem[] => favourites.filter((fav: JokeItem) => fav.id !== joke.id);
+  const removeFromFavourites = useCallback(
+    (joke: JokeItem) => {
+      const updatedFavourites = (prevState: JokeItem[]): JokeItem[] =>
+        prevState.filter((fav: JokeItem) => fav.id !== joke.id);
 
-    setFavourites((favourites: JokeItem[]) => updatedFavourites(favourites));
-  }, [favourites]);
+      setFavourites((prevState: JokeItem[]) => updatedFavourites(prevState));
+    },
+    [favourites],
+  );
 
-  return { favourites, addToFavourites, removeFromFavourites, isFavourite }; 
-}
+  return {favourites, addToFavourites, removeFromFavourites, isFavourite};
+};

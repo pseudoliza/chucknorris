@@ -1,9 +1,9 @@
-import React from 'react';
-import { HashRouter as Router, Route, Routes } from 'react-router-dom';
-import {Home} from './pages/Home';
-import {Favourites} from './pages/Favourites';
-import { ROUTES } from './constants/routes';
-import { Navigation } from './widgets/Navigation';
+import React from "react";
+import {HashRouter as Router, Route, Routes} from "react-router-dom";
+import {Home} from "./pages/Home";
+import {Favourites} from "./pages/Favourites";
+import {ROUTES} from "./constants/routes";
+import {Navigation} from "./widgets/Navigation";
 
 const App: React.FC = () => {
   return (
