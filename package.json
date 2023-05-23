@@ -7,7 +7,7 @@
     "start": "webpack serve --mode development",
     "build": "webpack --mode production",
     "test": "jest",
-    "lint": "eslint . --fix"
+    "lint": "eslint ."
   },
   "keywords": [],
   "author": "",
