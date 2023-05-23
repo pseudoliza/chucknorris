@@ -1,5 +1,6 @@
 import React from 'react';
 import { JokeItem } from '../../hooks/useJokes';
+import { Button, JokeContainer, JokeText } from './Joke.styles';
 
 interface IJoke {
   joke: JokeItem;
@@ -8,15 +9,11 @@ interface IJoke {
 }
 
 export const Joke = ({ joke, addToFavourites, removeFromFavourites }: IJoke) => (
-  <div>
-    <p>{joke.value}</p>
-    {addToFavourites && <button onClick={() => addToFavourites(joke)}>
-      Add to Favourites
-    </button> }
-    {removeFromFavourites && <button onClick={() => removeFromFavourites(joke)}>
-      Remove
-    </button>}
-  </div>
+  <JokeContainer>
+    <JokeText>{joke.value}</JokeText>
+    {addToFavourites && <Button onClick={() => addToFavourites(joke)}>Add to Favourites</Button>}
+    {removeFromFavourites && <Button onClick={() => removeFromFavourites(joke)}>Remove</Button>}
+  </JokeContainer>
 );
 
 export default Joke;

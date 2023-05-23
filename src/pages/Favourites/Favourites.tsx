@@ -2,25 +2,26 @@ import React from 'react';
 import { useFavourites } from '../../hooks/useFavourites';
 import { Joke } from '../../components/Joke';
 import { JokeItem } from '../../hooks/useJokes';
+import { FavouritesContainer, FavouritesHeader, FavouritesItem, FavouritesList, NoFavouritesText } from './Favourites.styles';
 
 const Favourites: React.FC = () => {
   const { favourites, removeFromFavourites } = useFavourites();
 
   return (
-    <div>
-      <h2>Favourites</h2>
+    <FavouritesContainer>
+      <FavouritesHeader>Favourites</FavouritesHeader>
       {favourites.length > 0 ? (
-        <ul>
+        <FavouritesList>
           {favourites.map((joke: JokeItem) => (
-            <li key={joke.id}>
+            <FavouritesItem key={joke.id}>
               <Joke joke={joke} removeFromFavourites={removeFromFavourites} />
-            </li>
+            </FavouritesItem>
           ))}
-        </ul>
+        </FavouritesList>
       ) : (
-        <p>No favourites yet. </p>
+        <NoFavouritesText>No favourites yet.</NoFavouritesText>
       )}
-    </div>
+    </FavouritesContainer>
   );
 };
 

@@ -5,6 +5,7 @@ export interface FavouritesHook {
   favourites: JokeItem[];
   addToFavourites: (joke: JokeItem) => void;
   removeFromFavourites: (joke: JokeItem) => void;
+  isFavourite: (joke: JokeItem) => boolean;
 }
 
 export const useFavourites = (): FavouritesHook => {
@@ -14,6 +15,8 @@ export const useFavourites = (): FavouritesHook => {
     localStorage.setItem('favourites', JSON.stringify(favourites));
   }, [favourites]);
   
+  const isFavourite = (joke: JokeItem) => favourites.find((fav: JokeItem) => joke.id === fav.id);
+
   const addToFavourites = useCallback((joke: JokeItem) => {
     if (favourites.length === 10 && joke) {
       alert('maximum favourites added, remove one to add new');
@@ -25,8 +28,6 @@ export const useFavourites = (): FavouritesHook => {
       }
       return favourites;
     })
-
-    
   }, [favourites]);
 
   const removeFromFavourites = useCallback((joke: JokeItem) => {    
@@ -35,5 +36,5 @@ export const useFavourites = (): FavouritesHook => {
     setFavourites((favourites: JokeItem[]) => updatedFavourites(favourites));
   }, [favourites]);
 
-  return { favourites, addToFavourites, removeFromFavourites }; 
+  return { favourites, addToFavourites, removeFromFavourites, isFavourite }; 
 }
