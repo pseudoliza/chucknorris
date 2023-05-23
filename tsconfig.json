@@ -16,10 +16,8 @@
       "@testing-library/jest-dom"
     ]
   },
-  // "include": ["src/**/*.tsx", "src/**/*.ts"],
   "include": [
     "src",
-    // "__tests__",
     "__mocks__",
   ],
   "exclude": ["node_modules"]
